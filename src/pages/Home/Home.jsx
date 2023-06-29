@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Carousel } from "antd";
 import "./Home.scss";
+import Modu from "../../components/Modu";
 
 function Home() {
     var [banners, setBanners] = useState([]); // 轮播图
     var [weights, setWeights] = useState([]);
-    var [works, setWorks] = useState([]);
 
     async function getBanners() {
         let res = await axios.get(
@@ -22,18 +22,9 @@ function Home() {
         setWeights(res.data.data.items.slice(0, 6));
     }
 
-    async function getWorks() {
-        let res = await axios.get(
-            "/api/topics/nature/works?lang=zh-Hans&platform=web&device=desktop&filter=featured:true&sort=hot&limit=16&offset=0"
-        );
-        console.log(res);
-        setWorks(res.data.data.items);
-    }
-
     useEffect(() => {
         getBanners();
         getWeights();
-        getWorks();
     }, []);
 
     return (
@@ -48,7 +39,11 @@ function Home() {
                     {banners.map((b, i) => (
                         <div key={i}>
                             <img
-                                style={{ width: "100%", height: 345 }}
+                                style={{
+                                    width: "100%",
+                                    height: 345,
+                                    cursor: "pointer",
+                                }}
                                 src={b.cover}
                                 alt=""
                             />
@@ -73,19 +68,10 @@ function Home() {
                 <div className="head">
                     <div>精选</div>
                 </div>
-                <div className="modu">
-                    <Carousel style={{}}>
-                        {works.map((b, i) => (
-                            <div key={i}>
-                                <img
-                                    style={{ width: "20%" }}
-                                    src={b.image.medium}
-                                    alt=""
-                                />
-                            </div>
-                        ))}
-                    </Carousel>
-                </div>
+                <Modu name='自然' keywrod="nature" />
+                <Modu name='城市' keywrod="city" />
+                <Modu name='运动' keywrod="sport" />
+                <Modu name='人物' keywrod="people" />
             </div>
         </>
     );

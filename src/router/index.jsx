@@ -1,4 +1,4 @@
-import Home from "../pages/Home/Home";
+import Home from "../pages/Home";
 import Explore from "../pages/Explore/Explore";
 import Label from "../pages/Label/Label";
 import Cameraman from "../pages/Cameraman/Cameraman";
@@ -7,23 +7,23 @@ import Hotevent from "../pages/Hotevent/Hotevent";
 let routes = [
     {
         path: "/",
-        element: <Home/>,
+        element: <Home />,
     },
     {
         path: "/explore",
-        element: <Explore/>,
+        element: <Explore />,
     },
     {
         path: "/label",
-        element: <Label/>,
+        element: <Label />,
     },
     {
         path: "/cameraman",
-        element: <Cameraman/>,
+        element: <Cameraman />,
     },
     {
         path: "/hotevent",
-        element: <Hotevent/>,
+        element: <Hotevent />,
     }
 ];
 

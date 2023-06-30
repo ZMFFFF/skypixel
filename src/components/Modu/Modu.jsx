@@ -1,7 +1,7 @@
 import axios from "axios";
 import { Carousel } from "antd";
 import { RightOutlined, EyeFilled, HeartOutlined } from "@ant-design/icons";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import "./Modu.scss";
 
 function Modu(props) {
@@ -17,11 +17,11 @@ function Modu(props) {
     };
 
     async function getData() {
-        let res = await axios.get(
-            `/api/topics/${props.keywrod}/works?lang=zh-Hans&platform=web&device=desktop&filter=featured:true&sort=hot&limit=16&offset=0`
-        );
-        // console.log(group(res.data.data.items, 4));
-
+        let url = `/api/topics/${props.keywrod}/works?lang=zh-Hans&platform=web&device=desktop&filter=featured:true&sort=hot&limit=16&offset=0`;
+        if (props.name == "摄影师")
+            url =
+                "/api/photographers/contract-works?lang=zh-Hans&platform=web&device=desktop&limit=16&offset=0";
+        let res = await axios.get(url);
         setData(group(res.data.data.items, 4));
     }
 
@@ -58,8 +58,15 @@ function Modu(props) {
                                     alt=""
                                 />
                                 <div className="xinxi">
-                                    <div>{b.title}</div>
-                                    <div>设备: {b.equipment.name}</div>
+                                    <div className="title">{b.title}</div>
+                                    <div
+                                        style={{ fontSize: 12, color: "#999" }}
+                                    >
+                                        设备:{" "}
+                                        <span className="equipment">
+                                            {b.equipment.name}
+                                        </span>
+                                    </div>
                                     <div>
                                         <span>
                                             <EyeFilled
@@ -83,10 +90,13 @@ function Modu(props) {
                                     <div className="user">
                                         <div className="user_l">
                                             <img
+                                                className="avatar"
                                                 src={b.user.avatar.medium}
                                                 alt=""
                                             />
-                                            <div>{b.user.name}</div>
+                                            <div className="name">
+                                                {b.user.name}
+                                            </div>
                                         </div>
                                         <div className="user_r">
                                             {b.created_at}

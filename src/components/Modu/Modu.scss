@@ -2,7 +2,8 @@
     position: relative;
     width: 1200px;
     margin: 0 auto;
-    
+    margin-top: 70px;
+
     .evenmore {
         width: 100%;
         display: flex;
@@ -22,10 +23,34 @@
             width: 285px;
             height: 320px;
             background-color: #fff;
+            border-radius: 4px;
+            overflow: hidden;
 
             .xinxi {
                 padding: 0 10px;
                 line-height: 30px;
+
+                .title {
+                    width: 100%;
+                    font-weight: bold;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+
+                    &:hover {
+                        color: #1088f2;
+                        cursor: pointer;
+                    }
+                }
+
+                .equipment {
+                    color: #1088f2;
+                    cursor: pointer;
+
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
 
                 .user {
                     display: flex;
@@ -41,6 +66,11 @@
                         overflow: hidden;
                         white-space: nowrap;
                         text-overflow: ellipsis;
+                        cursor: pointer;
+
+                        &:hover {
+                            color: #1088f2;
+                        }
                     }
 
                     .user_r {
@@ -58,6 +88,29 @@
                     }
                 }
             }
+        }
+    }
+}
+
+.slick-dots-top {
+    position: relative !important;
+    top: -355px !important;
+    float: right;
+    margin-right: 100px;
+    .slick-active {
+        button {
+            background-color: #1088f2 !important;
+        }
+    }
+    li {
+        width: 12px !important;
+
+        button {
+            opacity: 0.8 !important;
+            width: 12px !important;
+            height: 12px !important;
+            border-radius: 30% !important;
+            background-color: #ddd !important;
         }
     }
 }

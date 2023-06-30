@@ -2,6 +2,7 @@ import { NavLink, Routes, Route } from "react-router-dom";
 import routes from "./router/index";
 import "./App.scss";
 import logo from "./assets/logo-cn.00c32c62.svg";
+import Footer from "./components/Footer";
 
 function App() {
     return (
@@ -26,6 +27,7 @@ function App() {
                     <Route path={r.path} element={r.element} key={i}></Route>
                 ))}
             </Routes>
+            <Footer />
         </>
     );
 }

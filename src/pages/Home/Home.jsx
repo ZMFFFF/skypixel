@@ -47,7 +47,7 @@ function Home() {
     }, []);
 
     return (
-        <>
+        <div className="home">
             <div className="content">
                 <Carousel
                     bool={true}
@@ -120,7 +120,7 @@ function Home() {
                     </Carousel>
                 </div>
             </div>
-        </>
+        </div>
     );
 }
 

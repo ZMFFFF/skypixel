@@ -1,0 +1,41 @@
+{
+    "data": {
+        "items": [
+            {
+                "name": "全部",
+                "netsorkport": "https://www.skypixel.com/api/v2/works?lang=zh-Hans&platform=web&device=desktop&sort=hot&filter=featured:true&limit=20&"
+            },
+            {
+                "slug": "nature",
+                "name": "自然",
+                "image": "https://sp-webfront.skypixel.com/skypixel/public/website/assets/1513135757528-2c33a4bd1e53ae93cb6db53e6fc97698.png",
+                "icon": "https://sp-webfront.skypixel.com/skypixel/public/website/assets/1513063186219-33b006f4cb3088c88689e2b92367a05d.png",
+                "small_icon": "https://sp-webfront.skypixel.com/skypixel/public/website/assets/1516590048014-a327aad063159faf2914d13bad13eeee.png"
+            },
+            {
+                "slug": "city",
+                "name": "城市",
+                "image": "https://sp-webfront.skypixel.com/skypixel/public/website/assets/1513065113295-bb4a6b3e078de008dfcdbe70141c452b.png",
+                "icon": "https://sp-webfront.skypixel.com/skypixel/public/website/assets/1513063155378-5d48ed56bdb54f45cbdac7e028bb10bc.png",
+                "small_icon": "https://sp-webfront.skypixel.com/skypixel/public/website/assets/1516590131197-73bc6f4748a200a3927a447cedae5192.png"
+            },
+            {
+                "slug": "sport",
+                "name": "运动",
+                "image": "https://sp-webfront.skypixel.com/skypixel/public/website/assets/1513065179297-4188509b6de587d653078cdef1b2d8f4.png",
+                "icon": "https://sp-webfront.skypixel.com/skypixel/public/website/assets/1513063240707-53c9e2249f9168e2db950fc38ca2f0f8.png",
+                "small_icon": "https://sp-webfront.skypixel.com/skypixel/public/website/assets/1516590086995-1c83a01295411d6e85886e090a6b5df5.png"
+            },
+            {
+                "slug": "people",
+                "name": "人物",
+                "image": "https://sp-webfront.skypixel.com/skypixel/public/website/assets/1513065348878-31dce8e6f938b209d0ecebdbb53c511c.png",
+                "icon": "https://sp-webfront.skypixel.com/skypixel/public/website/assets/1513063206981-e2159b0c2c493ce16abfe4c53aefcc63.png",
+                "small_icon": "https://sp-webfront.skypixel.com/skypixel/public/website/assets/1516590110360-d0cf129f66cac95c66c25b90080210d3.png"
+            },
+            {
+                "name": "签约摄影师"
+            }
+        ]
+    }
+}

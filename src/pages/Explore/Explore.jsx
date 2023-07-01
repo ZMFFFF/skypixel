@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Spin } from "antd";
 import "./Explore.scss";
 import loading from "../../assets/22.gif";
 
@@ -19,10 +20,11 @@ function Explore() {
 
     async function getContent(url, page = 0) {
         let res = await axios.get(`${url}offset=${page}`);
-        console.log(res.data.data.items);
+        // console.log(res.data.data.items);
         if (res.data.data.items) {
             setContent((prev) => {
                 return [...prev, ...res.data.data.items];
+                // return prev.concat(res.data.data.items);
             });
             // setFlag(true);
             flag = true;
@@ -37,7 +39,6 @@ function Explore() {
             if (flag) {
                 // setFlag(false);
                 flag = false;
-                console.log("123");
                 setOffset((prev) => {
                     let newprev = prev + 20;
                     getContent(arr[active], newprev);
@@ -100,8 +101,8 @@ function Explore() {
                             </div>
                         ))
                     ) : (
-                        <div style={{ width: 1600, textAlign: "center" }}>
-                            <img style={{ width: 1000 }} src={loading} alt="" />
+                        <div style={{ textAlign: "center", width: 1400 }}>
+                            <Spin></Spin>
                         </div>
                     )}
                 </div>

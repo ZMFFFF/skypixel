@@ -1,0 +1,41 @@
+标签
+	
+选项卡切换 对应的 单词分别是 style theme equipment region
+
+滚动加载更多  offset + 9 即可
+ 
+// 题材
+https://www.skypixel.com/api/v2/tag-groups/style?lang=zh-Hans&platform=web&device=desktop&limit=9&offset=0
+// 风格
+https://www.skypixel.com/api/v2/tag-groups/theme?lang=zh-Hans&platform=web&device=desktop&limit=9&offset=0
+// 设备
+https://www.skypixel.com/api/v2/tag-groups/equipment?lang=zh-Hans&platform=web&device=desktop&limit=9&offset=0
+// 地区
+https://www.skypixel.com/api/v2/tag-groups/region?lang=zh-Hans&platform=web&device=desktop&limit=9&offset=0
+
+每次翻页 ofset 加 20
+
+// 推荐摄影师
+https://www.skypixel.com/api/v2/photographers/recommended?user_type=&lang=zh-Hans&platform=web&device=desktop&limit=20&offset=0
+// 热门摄影师 
+https://www.skypixel.com/api/v2/photographers/hot?user_type=&lang=zh-Hans&platform=web&device=desktop&limit=20&offset=0
+// 新晋摄影师
+https://www.skypixel.com/api/v2/photographers/new?user_type=&lang=zh-Hans&platform=web&device=desktop&limit=20&offset=0
+
+// 签约摄影师
+https://www.skypixel.com/api/v2/photographers/contract?user_type=&lang=zh-Hans&platform=web&device=desktop&limit=20&offset=0
+personal 个人 company 公司
+
+ {
+            name:'推荐摄影师',
+            type:'recommended'
+        },{
+            name:'热门摄影师',
+            type:'hot'
+        },{
+            name:'新晋摄影师',
+            type:'new'
+        },{
+            name:'签约摄影师',
+            type:'contract'
+        }

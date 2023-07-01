@@ -106,7 +106,7 @@ function Home() {
                             <RightOutlined />
                         </div>
                     </div>
-                    <Carousel>
+                    <Carousel dotPosition={"top"}>
                         {hotlable.map((h, i) => (
                             <div className="items" key={i}>
                                 {h.map((a, index) => (

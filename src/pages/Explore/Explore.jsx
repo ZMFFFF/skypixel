@@ -17,7 +17,7 @@ function Explore() {
         setNavs(res.data.data.items);
     }
 
-    async function getContent(url, page) {
+    async function getContent(url, page = 0) {
         let res = await axios.get(`${url}offset=${page}`);
         console.log(res.data.data.items);
         if (res.data.data.items) {
@@ -60,7 +60,7 @@ function Explore() {
         flag = true;
         setActive(i);
         setOffset(() => {
-            getContent(arr[i], 0);
+            getContent(arr[i]);
             return 0;
         });
         setContent([]);
@@ -68,7 +68,7 @@ function Explore() {
 
     useEffect(() => {
         getNav();
-        getContent(arr[0], offset);
+        getContent(arr[0]);
         window.addEventListener("scroll", scrollHandler);
 
         return () => {

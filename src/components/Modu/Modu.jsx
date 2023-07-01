@@ -99,7 +99,7 @@ function Modu(props) {
                                             </div>
                                         </div>
                                         <div className="user_r">
-                                            {b.created_at}
+                                            {b.created_at.slice(0, 10)}
                                         </div>
                                     </div>
                                 </div>

@@ -4,6 +4,29 @@
     margin: 0 auto;
     margin-top: 70px;
 
+    .slick-dots-top {
+        position: relative !important;
+        top: -355px !important;
+        float: right;
+        margin-right: 100px;
+        .slick-active {
+            button {
+                background-color: #1088f2 !important;
+            }
+        }
+        li {
+            width: 12px !important;
+
+            button {
+                opacity: 0.8 !important;
+                width: 12px !important;
+                height: 12px !important;
+                border-radius: 30% !important;
+                background-color: #ddd !important;
+            }
+        }
+    }
+
     .evenmore {
         width: 100%;
         display: flex;
@@ -74,7 +97,7 @@
                     }
 
                     .user_r {
-                        width: 70px;
+                        // width: 70px;
                         overflow: hidden;
                         white-space: nowrap;
                         // text-overflow: ellipsis;
@@ -88,29 +111,6 @@
                     }
                 }
             }
-        }
-    }
-}
-
-.slick-dots-top {
-    position: relative !important;
-    top: -355px !important;
-    float: right;
-    margin-right: 100px;
-    .slick-active {
-        button {
-            background-color: #1088f2 !important;
-        }
-    }
-    li {
-        width: 12px !important;
-
-        button {
-            opacity: 0.8 !important;
-            width: 12px !important;
-            height: 12px !important;
-            border-radius: 30% !important;
-            background-color: #ddd !important;
         }
     }
 }

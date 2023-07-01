@@ -2,6 +2,7 @@ import axios from "axios";
 import { Carousel } from "antd";
 import { RightOutlined, EyeFilled, HeartOutlined } from "@ant-design/icons";
 import React, { useEffect, useState, useMemo } from "react";
+import dayjs from "dayjs";
 import "./Modu.scss";
 
 function Modu(props) {
@@ -99,7 +100,9 @@ function Modu(props) {
                                             </div>
                                         </div>
                                         <div className="user_r">
-                                            {b.created_at.slice(0, 10)}
+                                            {dayjs(
+                                                b.created_at.slice(0, 10)
+                                            ).format("YYYY年M月MM日")}
                                         </div>
                                     </div>
                                 </div>

@@ -21,13 +21,13 @@ function Explore() {
     async function getContent(url, page = 0) {
         let res = await axios.get(`${url}offset=${page}`);
         // console.log(res.data.data.items);
+        flag = true;
         if (res.data.data.items) {
             setContent((prev) => {
                 return [...prev, ...res.data.data.items];
                 // return prev.concat(res.data.data.items);
             });
             // setFlag(true);
-            flag = true;
         }
     }
 

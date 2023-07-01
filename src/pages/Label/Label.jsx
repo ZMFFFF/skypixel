@@ -29,7 +29,10 @@ function Label() {
             `/api/tag-groups/${key}?lang=zh-Hans&platform=web&device=desktop&limit=9&offset=${page}`
         );
         console.log(res);
-        setContent((prev) => [...prev, ...res.data.data.items]);
+        flag = true;
+        if (res.data.data.items) {
+            setContent((prev) => [...prev, ...res.data.data.items]);
+        }
     }
 
     function scrollHandler() {

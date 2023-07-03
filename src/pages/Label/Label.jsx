@@ -17,8 +17,11 @@ function Label() {
     var [offset, setOffset] = useState(0);
 
     function changeNav(i) {
-        setContent([]);
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
         setActive(() => {
+            setContent([]);
+            setOffset(0);
             getContent(navsArr[i].key);
             return i;
         });
@@ -30,16 +33,15 @@ function Label() {
         );
         console.log(res);
         flag = true;
-        if (res.data.data.items) {
+        if (res.data.data.items)
             setContent((prev) => [...prev, ...res.data.data.items]);
-        }
     }
 
     function scrollHandler() {
         const scrollTop = document.documentElement.scrollTop;
         const windowHeight = document.documentElement.clientHeight;
         const scrollHeight = document.documentElement.scrollHeight;
-        if (scrollTop + windowHeight + 5 >= scrollHeight) {
+        if (scrollTop + windowHeight + 200 >= scrollHeight) {
             if (flag) {
                 // setFlag(false);
                 flag = false;

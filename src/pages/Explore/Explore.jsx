@@ -58,6 +58,8 @@ function Explore() {
     ];
 
     function tabnav(i) {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
         flag = true;
         setActive(i);
         setOffset(() => {

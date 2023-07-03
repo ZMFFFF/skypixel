@@ -86,7 +86,6 @@ function Label() {
                                     key={j}
                                     src={b.image.medium}
                                     alt=""
-                                    style={{ width: 145, height: 102 }}
                                 />
                             ))}
                             <div className="name">{a.name}</div>

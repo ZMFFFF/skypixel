@@ -32,19 +32,22 @@ function Modu(props) {
 
     return (
         <div className="modu">
-            <div className="evenmore">
-                <div style={{ fontSize: 20 }}>{props.name}</div>
-                <div
-                    style={{
-                        color: "#1088f2",
-                        fontSize: "14px",
-                        cursor: "pointer",
-                    }}
-                >
-                    更多
-                    <RightOutlined />
+            {data.length > 0 && (
+                <div className="evenmore">
+                    <div style={{ fontSize: 20 }}>{props.name}</div>
+                    <div
+                        style={{
+                            color: "#1088f2",
+                            fontSize: "14px",
+                            cursor: "pointer",
+                        }}
+                    >
+                        更多
+                        <RightOutlined />
+                    </div>
                 </div>
-            </div>
+            )}
+
             <Carousel dotPosition={"top"} style={{ margin: "50px 0" }}>
                 {data.map((a, i) => (
                     <div className="items" key={i}>

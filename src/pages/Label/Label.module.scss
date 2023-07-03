@@ -54,6 +54,17 @@
                 position: relative;
                 cursor: pointer;
 
+                img {
+                    width: 145px;
+                    height: 102px;
+                    object-fit: cover;
+                }
+
+                img:first-child {
+                    width: 208px !important;
+                    height: 208px !important;
+                }
+
                 .name {
                     position: absolute;
                     left: 15px;
@@ -61,15 +72,6 @@
                     font-size: 20px;
                     color: rgba(0, 0, 0, 0.85);
                     font-weight: 600;
-                }
-
-                img {
-                    object-fit: cover;
-                }
-
-                img:first-child {
-                    width: 208px !important;
-                    height: 208px !important;
                 }
             }
         }

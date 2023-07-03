@@ -93,19 +93,21 @@ function Home() {
                 <Modu name="人物" keywrod="people" />
                 <Modu name="摄影师" />
                 <div className="hotlable">
-                    <div className="evenmore">
-                        <div style={{ fontSize: 20 }}>热门标签</div>
-                        <div
-                            style={{
-                                color: "#1088f2",
-                                fontSize: "14px",
-                                cursor: "pointer",
-                            }}
-                        >
-                            更多
-                            <RightOutlined />
+                    {hotlable.length > 0 && (
+                        <div className="evenmore">
+                            <div style={{ fontSize: 20 }}>热门标签</div>
+                            <div
+                                style={{
+                                    color: "#1088f2",
+                                    fontSize: "14px",
+                                    cursor: "pointer",
+                                }}
+                            >
+                                更多
+                                <RightOutlined />
+                            </div>
                         </div>
-                    </div>
+                    )}
                     <Carousel dotPosition={"top"}>
                         {hotlable.map((h, i) => (
                             <div className="items" key={i}>

@@ -11,6 +11,8 @@ const Home: FC = () => {
     const getData = async () => {
         try {
             const { data } = await getBannerList()
+            console.log(getBannerList())
+            
             setBannersList(data.items)
         } catch (err) {
             throw err

@@ -5,5 +5,5 @@ export interface BannerItem {
     link_url: string;
     sequence: number;
     status: string;
-    updated_at: string;
+    // updated_at: string;
 }

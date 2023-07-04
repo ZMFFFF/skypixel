@@ -13,7 +13,7 @@ export default defineConfig({
                 target: "https://www.skypixel.com/api/v2", // 后端服务实际地址
                 changeOrigin: true, //开启代理
                 rewrite: (path) => path.replace(/^\/api/, ""),
-            },
+            }
         },
     },
 });

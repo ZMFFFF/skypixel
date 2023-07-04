@@ -24,7 +24,16 @@ function App() {
 
             <Routes>
                 {routes.map((r, i) => (
-                    <Route path={r.path} element={r.element} key={i}></Route>
+                    <Route path={r.path} element={r.element} key={i}>
+                        {r.child &&
+                            r.child.map((a, j) => (
+                                <Route
+                                    path={a.path}
+                                    element={a.element}
+                                    key={j}
+                                ></Route>
+                            ))}
+                    </Route>
                 ))}
             </Routes>
             <Footer />

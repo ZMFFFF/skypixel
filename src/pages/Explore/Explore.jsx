@@ -1,16 +1,19 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Spin } from "antd";
-import "./Explore.scss";
-import loading from "../../assets/22.gif";
+import { Spin, Button, Modal } from "antd";
+import style from "./Explore.module.scss";
+import { useNavigate, Outlet } from "react-router-dom";
 
 function Explore() {
     var [navs, setNavs] = useState([]);
     var [content, setContent] = useState([]);
     var [active, setActive] = useState(0);
     var [offset, setOffset] = useState(0);
-    // var [flag, setFlag] = useState(true);
+    var [popoverData, setPopoverData] = useState([]);
+    const [isModalOpen, setIsModalOpen] = useState(false);
     var flag = true;
+
+    var navigate = useNavigate();
 
     async function getNav() {
         let res = await axios.get("/public/data/navs.json");
@@ -20,7 +23,7 @@ function Explore() {
 
     async function getContent(url, page = 0) {
         let res = await axios.get(`${url}offset=${page}`);
-        // console.log(res.data.data.items);
+        console.log(res.data.data.items);
         flag = true;
         if (res.data.data.items) {
             setContent((prev) => {
@@ -69,7 +72,27 @@ function Explore() {
         setContent([]);
     }
 
+    const handleCancel = () => {
+        setIsModalOpen(false);
+        setPopoverData([]);
+    };
+
+    async function xq(type, slug) {
+        setIsModalOpen(true);
+        console.log(type, slug);
+        let url = `/api/photos/${slug}?lang=zh-Hans&platform=web&device=desktop&compatible=true`;
+        if (type == "video") {
+            url = `/api/videos/${slug}?lang=zh-Hans&platform=web&device=desktop`;
+        }
+
+        let res = await axios.get(url);
+        console.log(res.data.data.item);
+        setPopoverData(res.data.data.item);
+    }
+
     useEffect(() => {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
         getNav();
         getContent(arr[0]);
         window.addEventListener("scroll", scrollHandler);
@@ -80,7 +103,7 @@ function Explore() {
     }, []);
 
     return (
-        <div className="explore">
+        <div className={style.explore}>
             <div className="head">
                 <div className="navs">
                     {navs.map((a, i) => (
@@ -98,16 +121,46 @@ function Explore() {
                 <div className="items">
                     {content.length > 0 ? (
                         content.map((a, i) => (
-                            <div className="item" key={i}>
+                            <div
+                                className="item"
+                                onClick={() => xq(a.type, a.slug)}
+                                key={i}
+                            >
                                 <img src={a.image?.medium} alt="" />
                             </div>
                         ))
                     ) : (
                         <div style={{ textAlign: "center", width: 1400 }}>
-                            <Spin></Spin>
+                            <Spin></Spin> 加载中...
                         </div>
                     )}
                 </div>
+                <Modal
+                    title="Basic Modal"
+                    open={isModalOpen}
+                    onCancel={handleCancel}
+                    footer={null}
+                    width={1200}
+                    style={{ minWidth: 1000, minHeight: 700 }}
+                >
+                    <div className="cover" style={{textAlign: 'center'}}>
+                        {popoverData.image ? (
+                            <img
+                                src={popoverData.image?.medium}
+                                style={{
+                                    maxWidth: "100%",
+                                    height: 773,
+                                    objectFit: "cover",
+                                }}
+                                alt=""
+                            />
+                        ) : (
+                            <div style={{ height: 700 }}>
+                                <Spin /> 加载中...
+                            </div>
+                        )}
+                    </div>
+                </Modal>
             </div>
         </div>
     );

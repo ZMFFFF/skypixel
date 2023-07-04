@@ -3,6 +3,7 @@ import Explore from "../pages/Explore/Explore";
 import Label from "../pages/Label/Label";
 import Cameraman from "../pages/Cameraman/Cameraman";
 import Hotevent from "../pages/Hotevent/Hotevent";
+import Popover from '../components/Popover/Popover'
 
 let routes = [
     {
@@ -12,6 +13,12 @@ let routes = [
     {
         path: "/explore",
         element: <Explore/>,
+        child:[
+            {
+                path: 'popover',
+                element: <Popover />
+            }
+        ]
     },
     {
         path: "/label",

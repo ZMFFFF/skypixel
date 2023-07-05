@@ -6,6 +6,7 @@ import style from "./TagsChild.module.scss";
 
 function TagsChild() {
     let [searchParams, setSearchParams] = useSearchParams();
+    let group = searchParams.get("group");
 
     let Params = useParams();
 
@@ -15,9 +16,8 @@ function TagsChild() {
     var flag = true;
 
     async function getContents(key = "theme", page = 0) {
-        let url = `/api/tag-groups/${key}?lang=zh-Hans&platform=web&device=desktop&limit=9&offset=${page}`;
-
         try {
+            let url = `/api/tag-groups/${key}?lang=zh-Hans&platform=web&device=desktop&limit=9&offset=${page}`;
             let res = await axios.get(url);
             console.log(res);
             if (res.data.data.items.length == 0) {
@@ -43,12 +43,7 @@ function TagsChild() {
                 flag = false;
                 setPage((prev) => {
                     let nextPage = prev + 9;
-                    getContents(
-                        searchParams.get("group")
-                            ? searchParams.get("group")
-                            : "theme",
-                        nextPage
-                    );
+                    getContents(group ? group : "theme", nextPage);
                     return nextPage;
                 });
             }
@@ -60,20 +55,16 @@ function TagsChild() {
         document.documentElement.scrollTop = 0;
         setLoadbot(true);
         setPage(0);
-        if (!searchParams.get("group")) {
-            Promise.all([setContents([]), getContents()]);
+        if (group) {
+            Promise.all([setContents([]), getContents(group)]);
         } else {
-            Promise.all([
-                setContents([]),
-                getContents(searchParams.get("group")),
-            ]);
-            // getContents(page)
+            Promise.all([setContents([]), getContents()]);
         }
         window.addEventListener("scroll", scrollhanlder);
         return () => {
             window.removeEventListener("scroll", scrollhanlder);
         };
-    }, [searchParams.get("group")]);
+    }, [group]);
 
     return (
         <div className={style.tagschild}>
@@ -103,7 +94,17 @@ function TagsChild() {
                 >
                     <Spin></Spin> 加载更多中...
                 </div>
-            ) : null}
+            ) : (
+                <div
+                    style={{
+                        textAlign: "center",
+                        width: "100%",
+                        height: 40,
+                    }}
+                >
+                    没有更多了
+                </div>
+            )}
         </div>
     );
 }

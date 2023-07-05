@@ -5,6 +5,7 @@ import Cameraman from "../pages/Cameraman/Cameraman";
 import Hotevent from "../pages/Hotevent/Hotevent";
 import Popover from "../components/Popover/Popover";
 import TagsChild from "../components/TagsChild/TagsChild";
+import Notpage from '../components/Notpage/Notpage'
 
 let routes = [
     {
@@ -38,6 +39,10 @@ let routes = [
     {
         path: "/hotevent",
         element: <Hotevent />,
+    },
+    {
+        path: "/*",
+        element: <Notpage />,
     },
 ];
 

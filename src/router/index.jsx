@@ -1,37 +1,44 @@
 import Home from "../pages/Home/Home";
 import Explore from "../pages/Explore/Explore";
-import Label from "../pages/Label/Label";
+import Tags from "../pages/Tags/Tags";
 import Cameraman from "../pages/Cameraman/Cameraman";
 import Hotevent from "../pages/Hotevent/Hotevent";
-import Popover from '../components/Popover/Popover'
+import Popover from "../components/Popover/Popover";
+import TagsChild from "../components/TagsChild/TagsChild";
 
 let routes = [
     {
         path: "/",
-        element: <Home/>,
+        element: <Home />,
     },
     {
         path: "/explore",
-        element: <Explore/>,
-        child:[
+        element: <Explore />,
+        child: [
             {
-                path: 'popover',
-                element: <Popover />
-            }
-        ]
+                path: "popover",
+                element: <Popover />,
+            },
+        ],
     },
     {
-        path: "/label",
-        element: <Label/>,
+        path: "/tags",
+        element: <Tags />,
+        children: [
+            {
+                path: "",
+                element: <TagsChild />,
+            },
+        ],
     },
     {
         path: "/cameraman",
-        element: <Cameraman/>,
+        element: <Cameraman />,
     },
     {
         path: "/hotevent",
-        element: <Hotevent/>,
-    }
+        element: <Hotevent />,
+    },
 ];
 
 export default routes;

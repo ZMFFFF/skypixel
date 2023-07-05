@@ -5,7 +5,6 @@ import react from "@vitejs/plugin-react";
 export default defineConfig({
     plugins: [react()],
     server: {
-        host: "0.0.0.0",
         proxy: {
             // 本地开发环境通过代理实现跨域
             // 正则表达式写法

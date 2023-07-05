@@ -12,7 +12,7 @@ function App() {
                 <nav>
                     <NavLink to="/">首页</NavLink>
                     <NavLink to="/explore">探索</NavLink>
-                    <NavLink to="/label">标签</NavLink>
+                    <NavLink to="/tags">标签</NavLink>
                     <NavLink to="/cameraman">摄影师</NavLink>
                     <NavLink to="/hotevent">热门活动</NavLink>
                 </nav>
@@ -25,8 +25,8 @@ function App() {
             <Routes>
                 {routes.map((r, i) => (
                     <Route path={r.path} element={r.element} key={i}>
-                        {r.child &&
-                            r.child.map((a, j) => (
+                        {r.children &&
+                            r.children.map((a, j) => (
                                 <Route
                                     path={a.path}
                                     element={a.element}

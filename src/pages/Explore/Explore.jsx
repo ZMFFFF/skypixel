@@ -24,13 +24,16 @@ function Explore() {
     async function getContent(url, page = 0) {
         let res = await axios.get(`${url}offset=${page}`);
         console.log(res.data.data.items);
-        flag = true;
         if (res.data.data.items) {
             setContent((prev) => {
+                flag = true;
                 return [...prev, ...res.data.data.items];
                 // return prev.concat(res.data.data.items);
             });
+
             // setFlag(true);
+        } else {
+            flag = false;
         }
     }
 
@@ -135,6 +138,18 @@ function Explore() {
                         </div>
                     )}
                 </div>
+                {flag && content.length > 0 && (
+                    <div
+                        style={{
+                            textAlign: "center",
+                            width: "100%",
+                            height: 40,
+                        }}
+                    >
+                        <Spin></Spin> 加载中...
+                    </div>
+                )}
+
                 <Modal
                     title="Basic Modal"
                     open={isModalOpen}
@@ -143,7 +158,7 @@ function Explore() {
                     width={1200}
                     style={{ minWidth: 1000, minHeight: 700 }}
                 >
-                    <div className="cover" style={{textAlign: 'center'}}>
+                    <div className="cover" style={{ textAlign: "center" }}>
                         {popoverData.image ? (
                             <img
                                 src={popoverData.image?.medium}

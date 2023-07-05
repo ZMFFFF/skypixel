@@ -9,8 +9,6 @@ function TagsChild() {
 
     let Params = useParams();
 
-    // console.log(searchParams.get('group'));
-    // console.log(Params.key);
     var [content, setContents] = useState([]);
     let [page, setPage] = useState(0);
     var [loadbot, setLoadbot] = useState(true);
@@ -37,15 +35,12 @@ function TagsChild() {
     }
 
     function scrollhanlder() {
-        let scrollTop = document.documentElement.scrollTop; // 获取页面卷出的距离
-        let clientHeight = document.documentElement.clientHeight; // 获取可视窗口的高度
-        let scrollHeight = document.documentElement.scrollHeight; // 获取页面内容和包括不可见的内容的高度
-
+        let scrollTop = document.documentElement.scrollTop;
+        let clientHeight = document.documentElement.clientHeight;
+        let scrollHeight = document.documentElement.scrollHeight;
         if (scrollTop + clientHeight + 100 >= scrollHeight) {
             if (flag) {
                 flag = false;
-                console.log("到底了");
-
                 setPage((prev) => {
                     let nextPage = prev + 9;
                     getContents(
@@ -61,9 +56,6 @@ function TagsChild() {
     }
 
     useEffect(() => {
-        // setInterval(() => {
-        //     console.log(flag);
-        // }, 1000);
         document.body.scrollTop = 0;
         document.documentElement.scrollTop = 0;
         setLoadbot(true);
@@ -77,7 +69,6 @@ function TagsChild() {
             ]);
             // getContents(page)
         }
-
         window.addEventListener("scroll", scrollhanlder);
         return () => {
             window.removeEventListener("scroll", scrollhanlder);

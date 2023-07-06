@@ -2,7 +2,7 @@ import { NavLink, Routes, Route } from "react-router-dom";
 import routes from "./router/index";
 import "./App.scss";
 import logo from "./assets/logo-cn.00c32c62.svg";
-import Footer from "./components/Footer";
+import Footer from "./components/Footer/Footer";
 import { useLocation } from "react-router-dom";
 
 function App() {

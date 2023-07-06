@@ -16,7 +16,6 @@ function PhotographersChild() {
     async function getContent(key, offset = 0) {
         try {
             let url = `/api/photographers/${key}?user_type=&lang=zh-Hans&platform=web&device=desktop&limit=20&offset=${offset}`;
-
             let res = await axios.get(url);
             // console.log(res.data.data);
             setContent(res.data.data.items);

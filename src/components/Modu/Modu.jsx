@@ -18,12 +18,16 @@ function Modu(props) {
     };
 
     async function getData() {
-        let url = `/api/topics/${props.keywrod}/works?lang=zh-Hans&platform=web&device=desktop&filter=featured:true&sort=hot&limit=16&offset=0`;
-        if (props.name == "摄影师")
-            url =
-                "/api/photographers/contract-works?lang=zh-Hans&platform=web&device=desktop&limit=16&offset=0";
-        let res = await axios.get(url);
-        setData(group(res.data.data.items, 4));
+        try {
+            let url = `/api/topics/${props.keywrod}/works?lang=zh-Hans&platform=web&device=desktop&filter=featured:true&sort=hot&limit=16&offset=0`;
+            if (props.name == "签约摄影师")
+                url =
+                    "/api/photographers/contract-works?lang=zh-Hans&platform=web&device=desktop&limit=16&offset=0";
+            let res = await axios.get(url);
+            setData(group(res.data.data.items, 4));
+        } catch (error) {
+            getData();
+        }
     }
 
     useEffect(() => {
@@ -58,6 +62,7 @@ function Modu(props) {
                                     style={{
                                         width: "100%",
                                         height: "190px",
+                                        objectFit: 'cover'
                                     }}
                                     alt=""
                                 />

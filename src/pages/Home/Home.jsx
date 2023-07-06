@@ -20,24 +20,39 @@ function Home() {
     };
 
     async function getBanners() {
-        let res = await axios.get(
-            "/api/page-contents/skypixel_root_banner_top/banners?lang=zh-Hans&platform=web&device=desktop"
-        );
-        setBanners(res.data.data.items);
+        try {
+            let res = await axios.get(
+                "/api/page-contents/skypixel_root_banner_top/banners?lang=zh-Hans&platform=web&device=desktop"
+            );
+            setBanners(res.data.data.items);
+        } catch (error) {
+            // console.log(error);
+            getBanners();
+        }
     }
 
     async function getWeights() {
-        let res = await axios.get(
-            "/api/geo-tags/weight?lang=zh-Hans&platform=web&device=desktop"
-        );
-        setWeights(res.data.data.items.slice(0, 6));
+        try {
+            let res = await axios.get(
+                "/api/geo-tags/weight?lang=zh-Hans&platform=web&device=desktop"
+            );
+            setWeights(res.data.data.items.slice(0, 6));
+        } catch (error) {
+            // console.log(error);
+            getWeights();
+        }
     }
 
     async function getHotlable() {
-        let res = await axios.get(
-            "/api/tags?lang=zh-Hans&platform=web&device=desktop&limit=24&offset=0"
-        );
-        setHotlable(group(res.data.data.items, 6));
+        try {
+            let res = await axios.get(
+                "/api/tags?lang=zh-Hans&platform=web&device=desktop&limit=24&offset=0"
+            );
+            setHotlable(group(res.data.data.items, 6));
+        } catch (error) {
+            // console.log(error);
+            getHotlable();
+        }
     }
 
     useEffect(() => {
@@ -91,7 +106,7 @@ function Home() {
                 <Modu name="城市" keywrod="city" />
                 <Modu name="运动" keywrod="sport" />
                 <Modu name="人物" keywrod="people" />
-                <Modu name="摄影师" />
+                <Modu name="签约摄影师" />
                 <div className="hotlable">
                     {hotlable.length > 0 && (
                         <div className="evenmore">

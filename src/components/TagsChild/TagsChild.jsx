@@ -94,17 +94,7 @@ function TagsChild() {
                 >
                     <Spin></Spin> 加载更多中...
                 </div>
-            ) : (
-                <div
-                    style={{
-                        textAlign: "center",
-                        width: "100%",
-                        height: 40,
-                    }}
-                >
-                    没有更多了
-                </div>
-            )}
+            ) : null}
         </div>
     );
 }

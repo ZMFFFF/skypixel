@@ -1,11 +1,11 @@
 import Home from "../pages/Home/Home";
 import Explore from "../pages/Explore/Explore";
 import Tags from "../pages/Tags/Tags";
-import Cameraman from "../pages/Cameraman/Cameraman";
+import Photographers from "../pages/Photographers/Photographers";
 import Hotevent from "../pages/Hotevent/Hotevent";
-import Popover from "../components/Popover/Popover";
 import TagsChild from "../components/TagsChild/TagsChild";
-import Notpage from '../components/Notpage/Notpage'
+import PhotographersChild from "../components/PhotographersChild/PhotographersChild";
+import Notpage from "../components/Notpage/Notpage";
 
 let routes = [
     {
@@ -14,13 +14,7 @@ let routes = [
     },
     {
         path: "/explore",
-        element: <Explore />,
-        child: [
-            {
-                path: "popover",
-                element: <Popover />,
-            },
-        ],
+        element: <Explore />
     },
     {
         path: "/tags",
@@ -33,8 +27,14 @@ let routes = [
         ],
     },
     {
-        path: "/cameraman",
-        element: <Cameraman />,
+        path: "/photographers",
+        element: <Photographers />,
+        children: [
+            {
+                path: ":key",
+                element: <PhotographersChild />,
+            },
+        ],
     },
     {
         path: "/hotevent",

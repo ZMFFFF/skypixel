@@ -3,8 +3,12 @@ import routes from "./router/index";
 import "./App.scss";
 import logo from "./assets/logo-cn.00c32c62.svg";
 import Footer from "./components/Footer";
+import { useLocation } from "react-router-dom";
 
 function App() {
+    var location = useLocation();
+    // console.log(location.pathname.split("/")[1]);
+
     return (
         <>
             <header>
@@ -13,7 +17,15 @@ function App() {
                     <NavLink to="/">首页</NavLink>
                     <NavLink to="/explore">探索</NavLink>
                     <NavLink to="/tags">标签</NavLink>
-                    <NavLink to="/cameraman">摄影师</NavLink>
+                    <NavLink
+                        className={
+                            location.pathname.split("/")[1] ==
+                                "photographers" && "active"
+                        }
+                        to="/photographers/recommended"
+                    >
+                        摄影师
+                    </NavLink>
                     <NavLink to="/hotevent">热门活动</NavLink>
                 </nav>
                 <div className="login">

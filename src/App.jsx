@@ -7,7 +7,7 @@ import { useLocation } from "react-router-dom";
 
 function App() {
     var location = useLocation();
-    // console.log(location.pathname.split("/")[1]);
+    console.log(location.pathname.split("/")[1]);
 
     return (
         <>
